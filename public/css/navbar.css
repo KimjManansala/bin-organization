@@ -1,0 +1,9 @@
+.navbar {
+    position: fixed;
+    width: 100vw;
+    background-color: #aebac8;
+}
+.buttons{
+    padding-top: 10px;
+    height: 5px;
+}
