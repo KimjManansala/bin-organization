@@ -1,6 +1,8 @@
-# Project Title
+# Bin Organizations
 
-One Paragraph of project description goes here
+I am creating this personal project as a way to keep track of all my personal items in my own storage system.
+Easily being able to search and fnd which bin a certain item is in and also the quanitity will help me in organizing my own 
+personal belogings.
 
 ## Getting Started
 
