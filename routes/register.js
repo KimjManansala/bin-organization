@@ -45,7 +45,7 @@ router.post("/signup", (req, res) => {
               res.redirect("/dashboard");
               return;
             } else {
-              console.log('False itm is created')
+              console.log("False itm is created");
               res.render("signup", {
                 error: {
                   message: "Email is already registered"
@@ -71,10 +71,10 @@ router.post("/signup", (req, res) => {
         });
         return;
       });
-  }else{
-    res.render("signup",{
+  } else {
+    res.render("signup", {
       error: data.error
-    })
+    });
   }
 });
 
@@ -126,7 +126,6 @@ function checkAllInput(userInfo, res) {
   }
   if (userInfo.lastName) {
     console.log(true);
-
   } else {
     console.log(false);
     return {
