@@ -45,14 +45,12 @@ app.set('view engine', 'hbs')
 
 
 
-app.get('/', (req,res)=>{
-    res.render('home')
-})
+app.use(require('./routes/register'))
+app.use(require('./routes/initial'))
+
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("App listening on port " + port);
 });
-
-
-app.use(require('./routes/register'))

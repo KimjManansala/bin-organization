@@ -28,3 +28,9 @@
 
 
 
+
+
+.error > h2{
+    position: fixed;
+    color: red;
+}
