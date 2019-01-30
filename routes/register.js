@@ -11,31 +11,130 @@ router.use(
   })
 );
 
-// Handle bars
-const handleBars = require('handlebars')
-
-
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+router.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
+router.post("/signup", (req, res) => {
+  console.log(req.body);
+
+  // Saving user input into userInfo
+  let userInfo = {
+    email: req.body.email,
+    password: req.body.password,
+    firstName: req.body.firstname,
+    lastName: req.body.lastname
+  };
+  checkAllInput(userInfo, res);
+  console.log("This is the userInfo", userInfo);
+  bcrypt
+  .hash(userInfo.password, saltRounds)
+  .then((hash)=>{
+      // console.log(userInfo.email, hash, userInfo.firstName, userInfo.lastName)
+      createUser(userInfo.email, hash, userInfo.firstName, userInfo.lastName)
+          .then((itm)=>{
+              console.log('This is the res from createUser', itm)
+              if(itm.created){
+                  let session = req.session
+                  session.user = itm.user.dataValues
+                  console.log(req.session)
+                  res.redirect('/dashboard')
+                  return
+              }else{
+                res.render("signup", {error: {
+                    message : 'Email is already registered'
+                }})
+                return;
+              }
+          })
+          .catch((er)=>{
+            res.render("signup", {error: {
+                message : `ERROR: ${er}`
+            }})
+            return;
+          })
+  })
+  .catch((er)=>{
+    res.render("signup", {error: {
+        message : `ERROR: ${er}`
+    }})
+    return;
+  })
+
+});
+
+function checkAllInput(userInfo, res) {
+  if (userInfo.email) {
+    console.log(true);
+  } else {
+    console.log(false);
+    res.render("signup", {error: {
+        message : 'Email cannot be blank'
+    }})
+    return;
+  }
+  if(validator.validate(userInfo.email)){
+      console.log(true)
+  }else{
+    console.log(false);
+    res.render("signup", {error: {
+        message : 'Please input a valid email'
+    }})
+    return;
+  }
+
+  if (userInfo.password) {
+    console.log(true);
+  } else {
+    console.log(false);
+    res.render("signup", {error: {
+        message : 'Password cannot be blank'
+    }})
+    return;
+  }
+  if (userInfo.firstName){
+    console.log(true);
+  } else {
+    console.log(false);
+    res.render("signup", {error: {
+        message : ' First name cannot be blank'
+    }})
+    return;
+  }
+  if (userInfo.lastName) {
+    console.log(true);
+  } else {
+    console.log(false);
+    res.render("signup", {error: {
+        message : 'Last name cannot be blank'
+    }})
+    return;
+  }
+}
+
+function createUser(userName, hash, firstName, lastName) {
+  return new Promise((resolve, reject) => {
+    db.user
+      .findOrCreate({
+        where: { username: userName },
+        defaults: {
+          username: userName,
+          password: hash,
+          firstName: firstName,
+          lastName: lastName
+        }
+      })
+      .spread((user, created) => {
+        let data = { user: user, created: created };
+        resolve(data);
+      })
+      .catch(er => {
+        reject(er);
+      });
+  });
+}
+
 module.exports = router;
-
-
-router.get('/signup', (req, res)=>{
-    res.render('signup')
-})
-
-router.post('/signup', (req,res)=>{
-    console.log(req.body)
-
-    // Saving user input into userInfo
-    let userInfo = {
-        email : req.body.username,
-        password : req.body.password,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname
-    }
-
-    console.log('This is the userInfo', userInfo)
-    
-})

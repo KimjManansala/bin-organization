@@ -1,4 +1,3 @@
-
 <div class='input-body'>
 
     <h2>Sign up!</h2>
@@ -32,9 +31,18 @@
 
             </div>
             <div>
+                <div class="error">
+                    {{#if error}}
+                    <h2 display='color:red;'>{{error.message}}</h2>
+                    {{/if}}
+                </div>
+                <br>
                 <input type="submit" value="Submit" />
             </div>
+        </div>
     </form>
+
+    <h2>Or</h2>
 
 
 
