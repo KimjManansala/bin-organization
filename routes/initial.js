@@ -15,11 +15,11 @@ router.use(
 
 
 router.get('/', (req,res)=>{
-    res.render('home')
+    res.render('home', {title:'bin'})
 })
 
 router.get("/dashboard", (req,res)=>{
-    res.render('dashboard')
+    res.render('dashboard', {title:'dashboard'})
 })
 
 
