@@ -40,7 +40,6 @@ router.post("/signup", (req, res) => {
               if(itm.created){
                   let session = req.session
                   session.user = itm.user.dataValues
-                  console.log(req.session)
                   res.redirect('/dashboard')
                   return
               }else{
@@ -69,49 +68,54 @@ router.post("/signup", (req, res) => {
 function checkAllInput(userInfo, res) {
   if (userInfo.email) {
     console.log(true);
+    return true
   } else {
     console.log(false);
     res.render("signup", {error: {
         message : 'Email cannot be blank'
     }})
-    return;
+    return false;
   }
   if(validator.validate(userInfo.email)){
       console.log(true)
+      return true
   }else{
     console.log(false);
     res.render("signup", {error: {
         message : 'Please input a valid email'
     }})
-    return;
+    return false;
   }
 
   if (userInfo.password) {
     console.log(true);
+    return true
   } else {
     console.log(false);
     res.render("signup", {error: {
         message : 'Password cannot be blank'
     }})
-    return;
+    return false;
   }
   if (userInfo.firstName){
     console.log(true);
+    return true
   } else {
     console.log(false);
     res.render("signup", {error: {
         message : ' First name cannot be blank'
     }})
-    return;
+    return false;
   }
   if (userInfo.lastName) {
     console.log(true);
+    return true
   } else {
     console.log(false);
     res.render("signup", {error: {
         message : 'Last name cannot be blank'
     }})
-    return;
+    return false;
   }
 }
 
