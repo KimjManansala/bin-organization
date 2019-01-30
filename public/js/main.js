@@ -6,8 +6,18 @@ window.MYAPP = window.MYAPP || {};
 
   document.addEventListener("DOMContentLoaded", () => {
     navbar.innerHTML = MYAPP.loadNavbar();
+    console.log('herro')
+   const form = document.getElementById('register-form')
+   form.addEventListener('submit', (evt)=>{
+    
+
+  })
 
   });
+
+
+
+   
 })()
 
 
