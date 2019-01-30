@@ -1,6 +1,31 @@
- <div id='welcome'>
-        <h1>Cubic Organizer!</h1>
-        <h3>The best way to organize and check on your cubic bins!</h3>
-        <a class="button is-primary" href='/signup'>Sign Up</a>
-        <a class="button is-link" href='#'>Log In</a>
+<div id='welcome'>
+    <h1>Cubic Organizer!</h1>
+    <h3>The best way to organize and check on your cubic bins!</h3>
+    <a class="button is-primary" href='/signup'>Sign Up</a>
+    <a class="button is-link" id='signInButton'>Log In</a>
+    <div id='log-in-container' style='display:none;'>
+        <form action="/login" method="post">
+            <div>
+                <label>Email:</label>
+                <br />
+                <input type="text" name="email" />
+
+                <br />
+            </div>
+            <div>
+                <label>Password:</label>
+                <br />
+                <input type="password" name="password" />
+
+            </div>
+            <div>
+                <div class="error">
+                    {{#if error}}
+                    <h2 display='color:red;'>{{error.message}}</h2>
+                    {{/if}}
+                </div>
+                <br>
+                <input type="submit" value="Submit" />
+            </div>
     </div>
+</div>

@@ -22,7 +22,7 @@ window.MYAPP = window.MYAPP || {};
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href='/'>
               Home
             </a>
       
@@ -54,23 +54,7 @@ window.MYAPP = window.MYAPP || {};
           </div>
       
           <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons" id='signup_signin'>
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-              </div>
-              
-              <div class="buttons" id='logout' style="display:none">
-                <a class="button is-primary">
-                  <strong>Log out</strong>
-                </a>
-              </div>
-
-            </div>
+            
           </div>
         </div>`;
   }

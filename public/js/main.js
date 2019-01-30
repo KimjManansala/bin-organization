@@ -9,8 +9,12 @@ window.MYAPP = window.MYAPP || {};
 
   });
 
-
-
+  const logInCont = document.getElementById('log-in-container')
+  const logIn = document.getElementById("signInButton")
+  logIn.addEventListener('click', (evt)=>{
+    console.log('Hi')
+    logInCont.style.display = 'block'
+  })
    
 })()
 
