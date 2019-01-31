@@ -15,11 +15,10 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", {title: 'signup'});
 });
 
 router.post("/signup", (req, res) => {
-  console.log(req.body);
 
   // Saving user input into userInfo
   let userInfo = {
@@ -31,25 +30,24 @@ router.post("/signup", (req, res) => {
   let data = checkAllInput(userInfo);
 
   if (data.continue) {
-    console.log("This is the userInfo", userInfo);
     bcrypt
       .hash(userInfo.password, saltRounds)
       .then(hash => {
         // console.log(userInfo.email, hash, userInfo.firstName, userInfo.lastName)
         createUser(userInfo.email, hash, userInfo.firstName, userInfo.lastName)
           .then(itm => {
-            console.log("This is the res from createUser", itm);
             if (itm.created) {
               let session = req.session;
               session.user = itm.user.dataValues;
               res.redirect("/dashboard");
               return;
             } else {
-              console.log("False itm is created");
+              console.log("itm is created");
               res.render("signup", {
                 error: {
                   message: "Email is already registered"
-                }
+                },
+                title: 'signup'
               });
               return;
             }
@@ -58,7 +56,8 @@ router.post("/signup", (req, res) => {
             res.render("signup", {
               error: {
                 message: `ERROR: ${er}`
-              }
+              },
+              title: 'signup'
             });
             return;
           });
@@ -67,20 +66,22 @@ router.post("/signup", (req, res) => {
         res.render("signup", {
           error: {
             message: `ERROR: ${er}`
-          }
+          },
+          title: 'signup'
         });
         return;
       });
   } else {
     res.render("signup", {
-      error: data.error
+      error: data.error,
+      title: 'signup'
     });
   }
 });
 
 function checkAllInput(userInfo, res) {
   if (userInfo.email) {
-    console.log(true);
+    // Do nothing
   } else {
     console.log(false);
     return {
@@ -91,7 +92,7 @@ function checkAllInput(userInfo, res) {
     };
   }
   if (validator.validate(userInfo.email)) {
-    console.log(true);
+    // Do nothing
   } else {
     console.log(false);
     return {
@@ -103,7 +104,7 @@ function checkAllInput(userInfo, res) {
   }
 
   if (userInfo.password) {
-    console.log(true);
+    // Do nothing
   } else {
     console.log(false);
     return {
@@ -114,7 +115,7 @@ function checkAllInput(userInfo, res) {
     };
   }
   if (userInfo.firstName) {
-    console.log(true);
+    // Do nothing
   } else {
     console.log(false);
     return {
@@ -125,7 +126,7 @@ function checkAllInput(userInfo, res) {
     };
   }
   if (userInfo.lastName) {
-    console.log(true);
+    // Do nothing
   } else {
     console.log(false);
     return {

@@ -31,6 +31,6 @@
 
 
 .error > h2{
-    position: fixed;
+    position: absolute;
     color: red;
 }
