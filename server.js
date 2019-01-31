@@ -47,6 +47,7 @@ app.set('view engine', 'hbs')
 
 app.use(require('./routes/register'))
 app.use(require('./routes/initial'))
+app.use(require('./routes/login'))
 
 
 

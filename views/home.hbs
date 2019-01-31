@@ -3,6 +3,8 @@
     <h3>The best way to organize and check on your cubic bins!</h3>
     <a class="button is-primary" href='/signup'>Sign Up</a>
     <a class="button is-link" id='signInButton'>Log In</a>
+
+
     <div id='log-in-container' style='display:none;'>
         <form action="/login" method="post">
             <div>
@@ -21,6 +23,7 @@
             <div>
                 <div class="error">
                     {{#if error}}
+                    <script>let logInCont = document.getElementById('log-in-container');logInCont.style.display = 'block'</script>
                     <h2 display='color:red;'>{{error.message}}</h2>
                     {{/if}}
                 </div>
@@ -30,10 +33,13 @@
     </div>
 </div>
 <script>
-    const logInCont = document.getElementById('log-in-container')
+    logInCont = document.getElementById('log-in-container')
     const logIn = document.getElementById("signInButton")
     logIn.addEventListener('click', (evt) => {
-        console.log('Hi')
-        logInCont.style.display = 'block'
+        if (logInCont.style.display === 'none') {
+            logInCont.style.display = 'block'
+        } else {
+            logInCont.style.display = 'none'
+        }
     })
 </script>
