@@ -22,29 +22,38 @@ router.post("/login", (req, res) => {
         where: { username: username }
       })
       .then(user => {
-        console.log(user.dataValues);
-        bcrypt.compare(password, user.dataValues.password, (err, check) => {
-          console.log("This is check", check);
-          if (err) {
-            res.render("home", {
-              error: {
-                message: err
-              }
-            });
-          } else if (check) {
-            let session = req.session;
-            session.user = user.dataValues;
-            console.log("This is session", req.session);
-                res.redirect('/dashboard')
-          } else if (!check) {
-            res.render("home", {
-              title: "bin",
-              error: {
-                message: "Wrong password"
-              }
-            });
-          }
-        });
+        console.log(user)
+        if (user) {
+          bcrypt.compare(password, user.dataValues.password, (err, check) => {
+            console.log("This is check", check);
+            if (err) {
+              res.render("home", {
+                error: {
+                  message: err
+                }
+              });
+            } else if (check) {
+              let session = req.session;
+              session.user = user.dataValues;
+              console.log("This is session", req.session);
+              res.redirect("/dashboard");
+            } else if (!check) {
+              res.render("home", {
+                title: "bin",
+                error: {
+                  message: "Wrong password"
+                }
+              });
+            }
+          });
+        } else {
+          res.render("home", {
+            title: "bin",
+            error: {
+              message: "Emailis not register"
+            }
+          });
+        }
       });
   } else {
     res.render("home", {
@@ -61,7 +70,7 @@ function checkInput(username, password) {
     return {
       continue: false,
       error: {
-        message: "Please input username"
+        message: "Please input Email"
       }
     };
   }
