@@ -3,7 +3,7 @@
 
 
     <div class='left-column'>
-        <h2>Find your Shelves!</h2>
+        <h2>Find your Shelves!s</h2>
 
         <form action='/dashboard/shelve' method="get">
             <input datalist='shelves-datalist' name='shelve' placeholder="Search you shelves!">
@@ -36,13 +36,23 @@
     </div>
     {{#if shelve}}
 
-    <div class='right-column'>
+    <div class='middle-column'>
         <h1>{{shelve.name}}</h1>
         <div id='bin-container'>
-            <div class='square'>
-
+            {{#if bin}} {{#each bin}}
+            <div class="square">
+                {{this.dataValues.name}}
             </div>
+            {{/each}}
+            <div class="square">words</div>
+            {{/if}}
         </div>
     </div>
-
+    {{/if}} {{#if items}}
+    <div class='right-column'>
+        <h1>This is what you have</h1>
+        <ul>
+            <li>Hi</li>
+        </ul>
+    </div>
     {{/if}}
