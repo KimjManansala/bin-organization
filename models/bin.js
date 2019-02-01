@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   bin.associate = function(models) {
     // associations can be defined here
+    models.shelve.hasMany(bin, {foreignKey: 'shelve_id', sourceKey: 'id'})
+    bin.belongsTo(models.shelve, {foreignKey: 'shelve_id', sourceKey: 'id'})
   };
   return bin;
 };

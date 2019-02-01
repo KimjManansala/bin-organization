@@ -49,6 +49,7 @@ app.use(require('./routes/register'))
 app.use(require('./routes/initial'))
 app.use(require('./routes/login'))
 app.use(require('./routes/shelves'))
+app.use(require('./routes/bins'))
 
 
 const port = process.env.PORT || 3000;

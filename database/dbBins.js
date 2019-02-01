@@ -1,7 +1,8 @@
 const db = require("../models");
 
 const dbBin = {
-  findBin: findBin
+  findBin: findBin,
+  createBin: createBin
 };
 module.exports = dbBin;
 
@@ -21,4 +22,32 @@ function findBin(shelveId) {
         reject(er);
       });
   });
+}
+
+
+
+function createBin(shelve_id, name){
+    return new Promise((resolve, reject)=>{
+        db.bin
+        .findOrCreate({
+            where:{
+                name: name,
+                shelve_id: shelve_id
+            },
+            defaults:{
+                name: name,
+                shelve_id: shelve_id
+            }
+        })
+        .spread((bin, created) => {
+            const data = {
+              bin: bin,
+              created: created
+            };
+            resolve(data);
+          })
+          .catch(er => {
+            reject(er);
+          });
+    })
 }
