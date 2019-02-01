@@ -10,18 +10,16 @@ router.use(
   })
 );
 
+router.get("/", (req, res) => {
+  res.render("home", { title: "bin" });
+});
 
-
-
-
-router.get('/', (req,res)=>{
-    res.render('home', {title:'bin'})
-})
-
-router.get("/dashboard", (req,res)=>{
-    res.render('dashboard', {title:'dashboard'})
-})
-
-
+router.get("/dashboard", (req, res) => {
+  if (req.session.user) {
+    res.render("dashboard", { title: "dashboard" });
+  } else {
+    res.redirect("/");
+  }
+});
 
 module.exports = router;

@@ -1,11 +1,4 @@
-
-
-
-
-
-
-
-#welcome{
+#welcome {
     height: 100vh;
     background-image: url('../img/background.jpg');
     background-attachment: fixed;
@@ -19,10 +12,12 @@
     justify-content: center;
     align-items: center;
 }
-#welcome > *{
+
+#welcome>* {
     margin: 5px;
 }
-#welcome > .button{
+
+#welcome>.button {
     width: 75px;
 }
 
@@ -30,7 +25,59 @@
 
 
 
-.error > h2{
+.error>h2 {
     position: absolute;
     color: red;
+}
+
+
+
+/* DASHBOARD */
+
+.dash-body {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+
+    height: 100vh;
+    background-image: url('../img/background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.dash-body>.left-column {
+
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.dash-body>.right-column {
+    background-color: aqua;
+    flex-grow: 2;
+    margin-right: 20px;
+
+
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.bin
+
+.square {
+    height: 50px;
+    width: 50px;
 }

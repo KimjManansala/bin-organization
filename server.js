@@ -48,7 +48,7 @@ app.set('view engine', 'hbs')
 app.use(require('./routes/register'))
 app.use(require('./routes/initial'))
 app.use(require('./routes/login'))
-
+app.use(require('./routes/shelves'))
 
 
 const port = process.env.PORT || 3000;

@@ -1,1 +1,35 @@
-<h1>WELCOME</h1>
+<div class='dash-body'>
+
+
+
+    <div class='left-column'>
+        <h2>Shelves</h2>
+
+        <form action='/dashboard/shelve' method="get">
+            <input datalist='shelves-datalist' name='shelve' placeholder="Search you shelves!">
+            <datalist id='shelves-datalist'>
+
+            </datalist>
+            <input type="submit">
+        </form>
+        <div class='add-shelves-container'>
+            <h2>Create a shelve!</h2>
+            <form action="/dashboard/shelve" method="post">
+                <input name='shelveName' placeholder="Add a new shelve!">
+                <input type="submit">
+            </form>
+
+        </div>
+    </div>
+    {{#if shelve}}
+
+    <div class='right-column'>
+        <h1>{{shelve.name}}</h1>
+        <div id='bin-container'>
+            <div class='square'>
+
+            </div>
+        </div>
+    </div>
+
+    {{/if}}
