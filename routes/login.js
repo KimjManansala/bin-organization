@@ -22,10 +22,8 @@ router.post("/login", (req, res) => {
         where: { username: username }
       })
       .then(user => {
-        console.log(user)
         if (user) {
           bcrypt.compare(password, user.dataValues.password, (err, check) => {
-            console.log("This is check", check);
             if (err) {
               res.render("home", {
                 error: {
@@ -35,7 +33,6 @@ router.post("/login", (req, res) => {
             } else if (check) {
               let session = req.session;
               session.user = user.dataValues;
-              console.log("This is session", req.session);
               res.redirect("/dashboard");
             } else if (!check) {
               res.render("home", {

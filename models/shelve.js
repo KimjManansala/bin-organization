@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   shelve.associate = function(models) {
-    // associations can be defined here
+    models.user.hasMany(shelve, {foreignKey: 'user_id', sourceKey: 'id'})
+    shelve.belongsTo(models.user, {foreignKey: 'user_id', sourceKey: 'id'})
   };
   return shelve;
 };
