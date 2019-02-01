@@ -21,18 +21,29 @@ router.get("/dashboard/shelve", (req, res) => {
     dbShelve
       .getShelves(userId, name)
       .then(shelve => {
+        //   USER SEARCHED SHELF IS THERE
         if (shelve) {
           console.log(shelve.dataValues.name);
           let session = req.session;
-          session.shelve = shelve.dataValues.id;
-          res.render("dashboard", {
-            shelve: {
-              name: shelve.dataValues.name
-            },
-            title: "dashboard"
-          });
+          session.shelve = shelve.dataValues;
+        //   res.render("dashboard", {
+        //     shelve: {
+        //       name: shelve.dataValues.name
+        //     },
+        //     title: "dashboard"
+
+        //   });
+        res.redirect('/dashboard/shelve/bins')
+            // Instead of rendeing the boar redirect to a get
+
+        //   USER SEARCHED SHELF IS NOT THERE
         } else {
-          console.log("No shelve found");
+          res.render("dashboard", {
+            title: "dashboard",
+            errorSearch: {
+              message: "No shelve found"
+            }
+          });
         }
       })
       .catch(er => {
@@ -47,17 +58,29 @@ router.post("/dashboard/shelve", (req, res) => {
   if (req.session.user) {
     let userId = req.session.user.id;
     let name = req.body.shelveName;
-    dbShelve.createShelve(userId, name)
-        .then(data=>{
-            if(data.created){
-                console.log('This is data.shelve', data.shelve)
-            }else{
-                console.log('Not created')
-            }
-        })
-        .catch(er=>{
-            console.log('This is dashboard/shelve post er', er)
-        })
+    dbShelve
+      .createShelve(userId, name)
+      .then(data => {
+        if (data.created) {
+          console.log("This is data.shelve", data.shelve.dataValues);
+          res.render("dashboard", {
+            shelve: {
+              name: data.shelve.dataValues.name
+            },
+            title: "dashboard"
+          });
+        } else {
+          res.render('dashboard', {
+              title: 'dashboard',
+              errorAdd : {
+                  message: 'Shelve is already made!'
+              }
+          })
+        }
+      })
+      .catch(er => {
+        console.log("This is dashboard/shelve post er", er);
+      });
   } else {
     res.redirect("/");
   }

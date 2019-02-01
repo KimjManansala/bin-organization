@@ -38,7 +38,7 @@
     margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
 
@@ -60,12 +60,12 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin-left: 20px;
+
 }
 
-.dash-body>.right-column {
+.dash-body>.middle-column {
     background-color: aqua;
     flex-grow: 2;
-    margin-right: 20px;
 
 
     font-size: 30px;
@@ -75,9 +75,32 @@
 
 }
 
-.bin
+.middle-column > h1{
+    margin: auto;
+}
+
+#bin-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+    justify-content: space-evenly;
+}
 
 .square {
-    height: 50px;
-    width: 50px;
+    border-style: solid;
+    border-color: red;
+    width: 75px;
+    height: 75px;
+    font-size: 25px;
+    overflow: scroll;
+}
+
+
+.right-column{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
 }
