@@ -7,7 +7,7 @@ module.exports = {
       [
         {
           name: "bin-admin",
-          shelve_id: 4,
+          shelve_id: 1,
           createdAt: "NOW()",
           updatedAt: "NOW()"
         }

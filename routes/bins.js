@@ -9,35 +9,55 @@ router.use(
   })
 );
 
-const dbShelve = require("../database/dbBins");
+// const dbShelve = require("../database/dbBins");
 const dbBins = require("../database/dbBins");
 
 router.get("/dashboard/shelve/bins", (req, res) => {
   if (req.session.user) {
     dbBins.findBin(req.session.shelve.id)
     .then(data => {
-        console.log('This is data', data)
-        data.forEach(itm=>{
-            console.log('------------------')
-            console.log(itm.dataValues)
-            console.log('------------------')
-        })
-        res.render('dashboard', {
-            title: 'dashboard',
-            shelve : {
-                name: req.session.shelve.name
-            },
-            bin: data
-        })
-
+      console.log('This one is data')
+      data.forEach(itm => {
+        console.log("------------------");
+        console.log(itm.dataValues);
+        console.log("------------------");
+      });
+      res.render("dashboard", {
+        title: "dashboard",
+        shelve: {
+          name: req.session.shelve.name
+        },
+        bin: data
+      });
     });
   } else {
     res.redirect("/");
   }
 });
 
-module.exports = router;
+router.post("/dashboard/shelve/bins", (req, res) => {
+  if (req.session.user) {
+    let shelveId = req.session.shelve.id;
+    let binName = req.body.binName;
+    dbBins
+      .createBin(shelveId, binName)
+      .then(itm => {
+        if (itm.created) {
+          console.log(itm)
 
+          res.redirect('/dashboard/shelve/bins')
+
+        }
+      })
+      .catch((er)=>{
+        console.log(er)
+      })
+  } else {
+    res.redirect("/");
+  }
+});
+
+module.exports = router;
 
 // THE SESSION DATA STRUCTURE LOOKS LIKE
 // Session {
@@ -59,5 +79,5 @@ module.exports = router;
 //        name: 'testShelve',
 //        createdAt: '2019-01-31T22:56:35.615Z',
 //        updatedAt: '2019-01-31T22:56:35.615Z',
-//        user_id: 11 } 
+//        user_id: 11 }
 // }

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "standard server.js",
+    "test": "mocha",
     "start": "nodemon server.js"
   },
   "author": "",
@@ -28,7 +28,8 @@
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "4.42.0",
-    "sequelize-views-support": "^1.2.2"
+    "sequelize-views-support": "^1.2.2",
+    "mocha": "^5.2.0"
   },
   "devDependencies": {
     "sequelize-cli": "5.4.0"

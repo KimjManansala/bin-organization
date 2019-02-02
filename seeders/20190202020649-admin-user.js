@@ -3,11 +3,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
-      "bins",
+      "users",
       [
         {
-          name: "bin-admin-2",
-          shelve_id: 1,
+          username: "admin",
+          password: 'admin',
+          firstName: 'admin',
+          lastName: 'admin',
           createdAt: "NOW()",
           updatedAt: "NOW()"
         }

@@ -64,7 +64,7 @@
 }
 
 .dash-body>.middle-column {
-    background-color: aqua;
+
     flex-grow: 2;
 
 
@@ -75,11 +75,11 @@
 
 }
 
-.middle-column > h1{
+.middle-column>h1 {
     margin: auto;
 }
 
-#bin-container{
+#bin-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -92,13 +92,17 @@
     border-color: red;
     width: 75px;
     height: 75px;
-    font-size: 25px;
+    font-size: 10px;
     overflow: scroll;
+    text-align: center;
+    align-content: center;
 }
 
 
-.right-column{
-    
+
+
+.right-column {
+
     display: flex;
     align-items: center;
     flex-direction: column;
