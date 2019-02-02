@@ -6,8 +6,8 @@ module.exports = {
       "shelves",
       [
         {
-          name: "testShelve",
-          user_id: 11,
+          name: "bin-shelve",
+          user_id: 1,
           createdAt: "NOW()",
           updatedAt: "NOW()"
         }

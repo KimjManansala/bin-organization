@@ -30,7 +30,13 @@
                 <h2 display='color:red;'>{{errorAdd.message}}</h2>
                 {{/if}}
             </div>
-            <br>
+            <br> {{#if shelve}}
+            <h2>Create a Bin!</h2>
+            <form action="/dashboard/shelve/bins" method="post">
+                <input name='binName' placeholder="Add a new bin!">
+                <input type="submit">
+            </form>
+            {{/if}}
 
         </div>
     </div>
@@ -43,9 +49,35 @@
             <div class="square">
                 {{this.dataValues.name}}
             </div>
-            {{/each}}
-            <div class="square">words</div>
-            {{/if}}
+            {{/each}} {{/if}}
+
+            <button type='button' id='bin-add-button'>Add bins!</button>
+            <script>
+                let binContainer = document.getElementById('bin-container')
+                binContainer.addEventListener('click', (evt) => {
+                    let text;
+                    evt.preventDefault()
+                    if (evt.target.id = ("bin-add-button")) {
+                        let bin = prompt("Please enter name of bin", "book-bin")
+                        if (bin === null || bin === '' || !bin) {
+                            text = 'User cancelled the prompt'
+                        } else {
+                            axios.post('/dashboard/shelve/bins',
+                                {
+                                    binName: bin
+                                })
+                                .then(res => {
+                                    console.log(res.data.success)
+                                    if (res.data.success) {
+
+                                        axios.get('/dashboard/shelve/bins')
+                                    }
+                                })
+                        }
+                    }
+                })
+
+            </script>
         </div>
     </div>
     {{/if}} {{#if items}}
@@ -56,3 +88,5 @@
         </ul>
     </div>
     {{/if}}
+
+</div>
