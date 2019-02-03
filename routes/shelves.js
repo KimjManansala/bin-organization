@@ -64,7 +64,7 @@ router.post("/dashboard/shelve", (req, res) => {
         if (data.created) {
           console.log("This is data.shelve ''Hi", data.shelve.dataValues);
           let session = req.session;
-          session.shelve = shelve.dataValues;
+          session.shelve = data.shelve.dataValues;
           res.render("dashboard", {
             shelve: {
               name: data.shelve.dataValues.name
