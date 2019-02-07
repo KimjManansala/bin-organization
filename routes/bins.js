@@ -14,20 +14,23 @@ const dbBins = require("../database/dbBins");
 
 router.get("/dashboard/shelve/bins", (req, res) => {
   if (req.session.user) {
-    dbBins.findBin(req.session.shelve.id)
-    .then(data => {
-      console.log('This one is data')
-      data.forEach(itm => {
-        console.log("------------------");
-        console.log(itm.dataValues);
-        console.log("------------------");
-      });
+    bins = []
+    dbBins.findBin(req.session.shelve.id).then(data => {
+      data.forEach(e=>{
+        bins.push(e.dataValues)
+      })
+      req.session.bin = bins
+
+      console.log('Herrrro', bins)
+      console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+      console.log('This is in session', req.session)
+      console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
       res.render("dashboard", {
         title: "dashboard",
         shelve: {
           name: req.session.shelve.name
         },
-        bin: data
+        bin: bins
       });
     });
   } else {
@@ -43,18 +46,30 @@ router.post("/dashboard/shelve/bins", (req, res) => {
       .createBin(shelveId, binName)
       .then(itm => {
         if (itm.created) {
-          console.log(itm)
 
-          res.redirect('/dashboard/shelve/bins')
-
+          res.redirect("/dashboard/shelve/bins");
         }
       })
-      .catch((er)=>{
-        console.log(er)
-      })
+      .catch(er => {
+        console.log(er);
+      });
   } else {
     res.redirect("/");
   }
+});
+
+router.delete("/dashboard/shelve/bins", (req, res) => {
+  let binName = req.body.bin;
+  let shelveId = req.session.shelve.id;
+  console.log("This is req.shelve", req.session.shelve);
+  dbBins
+    .findOneBin(shelveId, binName)
+    .then(itm => {
+      console.log('This is',itm);
+    })
+    .catch(er => {
+      console.log(er);
+    });
 });
 
 module.exports = router;

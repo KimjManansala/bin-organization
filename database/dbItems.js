@@ -1,18 +1,18 @@
 const db = require("../models");
 
 const dbItems = {
-
+    getItems: getItems
 }
 module.exports = dbItems;
 
 
 
 function getItems(bin_id){
-    return new Prolmise((resolve, reject)=>{
+    return new Promise((resolve, reject)=>{
         db.item
         .findAll({
             where: {
-                shelve_id: shelveId
+                bin_id: bin_id
               }
         })
         .then(itm => {

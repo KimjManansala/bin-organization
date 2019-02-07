@@ -50,6 +50,7 @@ app.use(require('./routes/initial'))
 app.use(require('./routes/login'))
 app.use(require('./routes/shelves'))
 app.use(require('./routes/bins'))
+app.use(require('./routes/items'))
 
 
 const port = process.env.PORT || 3000;

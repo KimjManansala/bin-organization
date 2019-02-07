@@ -17,13 +17,11 @@ router.get("/dashboard/shelve", (req, res) => {
   if (req.session.user) {
     let userId = req.session.user.id;
     let name = req.query.shelve;
-    console.log(userId, name);
     dbShelve
       .getShelves(userId, name)
       .then(shelve => {
         //   USER SEARCHED SHELF IS THERE
         if (shelve) {
-          console.log(shelve.dataValues.name);
           let session = req.session;
           session.shelve = shelve.dataValues;
         //   res.render("dashboard", {
@@ -62,7 +60,6 @@ router.post("/dashboard/shelve", (req, res) => {
       .createShelve(userId, name)
       .then(data => {
         if (data.created) {
-          console.log("This is data.shelve ''Hi", data.shelve.dataValues);
           let session = req.session;
           session.shelve = data.shelve.dataValues;
           res.render("dashboard", {

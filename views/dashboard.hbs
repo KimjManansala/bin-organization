@@ -49,22 +49,47 @@
                 <div id='bin-container'>
                     {{#if bin}} {{#each bin}}
                     <div class="square">
-                        {{this.dataValues.name}}
+                        {{this.name}} {{!-- ACTION TO GET ITEMS --}}
+                        <form action="/dashboard/shelve/bins/items" method='get'>
+                            <input name='bin' style='display:none;' value={{this.id}}>
+                            <button>Open bin!</button>
+                        </form>
+                        <form id='deleteBin'>
+                            <input id='deleteInput' name='name' value={{this.id}} style='display:none;'>
+                            <button>Delete bin!</button>
+                        </form>
+
                     </div>
                     {{/each}} {{/if}}
-
-
                 </div>
             </div>
         </div>
-        {{/if}}
-         {{#if items}}
+        {{/if}} {{#if items}}
         <div class='right-column'>
-            <h1>This is what you have</h1>
+            {{#if items.none}}
+            <h2>{{items.none}}</h2>
+            {{/if}} 
+            {{#if items.data}}
+            <h2>This is what you have</h2>
             <ul>
                 <li>Hi</li>
             </ul>
-        </div>
-        {{/if}}
+            {{/if}} 
+        </div> {{/if}}
     </div>
 </div>
+
+<script>
+    const deleteBinForm = document.getElementById('deleteBin');
+    const binName = document.getElementById('deleteInput').value
+    deleteBinForm.addEventListener('submit', (evt) => {
+        evt.preventDefault()
+        axios.delete('/dashboard/shelve/bins', { data: { bin: binName } })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(er => {
+                console.log(er)
+            })
+    })
+</script>
