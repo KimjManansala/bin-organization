@@ -134,3 +134,12 @@
     flex-direction: column;
     overflow: scroll;
 }
+
+
+#items-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+#items-list > li{
+    margin: 10px;
+}

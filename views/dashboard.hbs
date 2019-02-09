@@ -68,17 +68,29 @@
         <div class='right-column'>
             {{#if items.none}}
             <h2>{{items.none}}</h2>
-            {{/if}} 
-            {{#if items.data}}
+            {{/if}} {{#if items.data}}
             <h2>This is what you have</h2>
-            <ul>
-                <li>Hi</li>
+            <br/>
+            <br/>
+
+            <ul id='items-list'>
+                {{#each items.data}}
+                <li>
+                    <p id='items-data' value='{{this.user_id}}'>{{this.name}}</p>
+                </li>
+                <hr/> {{/each}}
             </ul>
-            {{/if}} 
+            {{/if}}
+            <form method='POST' action='/dashboard/shelve/bins/items'>
+                <input name='item' placeholder="Add an Item!" type='text'>
+                <button type="submit" style+'margin: 10px auto'>Submit</button>
+            </form>
+
         </div> {{/if}}
+
     </div>
 </div>
-
+{{!-- 
 <script>
     const deleteBinForm = document.getElementById('deleteBin');
     const binName = document.getElementById('deleteInput').value
@@ -92,4 +104,4 @@
                 console.log(er)
             })
     })
-</script>
+</script> --}}
