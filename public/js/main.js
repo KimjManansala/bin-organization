@@ -44,7 +44,7 @@ if (document.getElementById("items-list")) {
       console.log(e.target.innerHTML)
       axios.delete(`/dashboard/shelve/bins/items`, {data: { name : e.target.innerHTML}})
       .then(e=>{
-        console.log('HERRO', e)
+        // console.log('HERRO', e)
         location.reload();
 
       })
