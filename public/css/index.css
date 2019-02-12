@@ -35,11 +35,9 @@
 /* DASHBOARD */
 
 .dash-body {
-    margin: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 
 
     height: 100vh;
@@ -50,9 +48,18 @@
     background-size: cover;
 }
 
+.dashboard{
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.24);
+    padding: 35px;
+    overflow: auto;
+}
 
-
-.dash-body>.left-column {
+.dashboard>.left-column {
 
     /* background-color: pink; */
     display: flex;
@@ -62,8 +69,16 @@
     margin-left: 20px;
 
 }
+.left-column > *{
+    font-size: 35px;
+}
 
-.dash-body>.middle-column {
+.left-column, .middle-column{
+    margin: 40px;
+}
+
+
+.dashboard>.middle-column {
 
     flex-grow: 2;
 
@@ -74,26 +89,37 @@
     align-items: center;
 
 }
-
-.middle-column>h1 {
-    margin: auto;
+.bins{
+    align-content: center;
+    display: flex;
+    flex-direction: column;
 }
+
 
 #bin-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 75%;
+    width: 40%;
     justify-content: space-evenly;
 }
+
+
+.bins > *, h1{
+    margin: auto;
+    text-align: center;
+    font-size: 35px;
+}
+
 
 .square {
     border-style: solid;
     border-color: red;
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     font-size: 10px;
     overflow: scroll;
+    margin: 10px;
     text-align: center;
     align-content: center;
 }

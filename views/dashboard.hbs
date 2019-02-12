@@ -1,92 +1,70 @@
 <div class='dash-body'>
 
+    <div class='dashboard'>
 
+        <div class='left-column'>
+            <h2>Find your Shelves!</h2>
 
-    <div class='left-column'>
-        <h2>Find your Shelves!s</h2>
+            <form action='/dashboard/shelve' method="get">
+                <input datalist='shelves-datalist' name='shelve' placeholder="Search you shelves!">
+                <datalist id='shelves-datalist'>
 
-        <form action='/dashboard/shelve' method="get">
-            <input datalist='shelves-datalist' name='shelve' placeholder="Search you shelves!">
-            <datalist id='shelves-datalist'>
-
-            </datalist>
-            <input type="submit">
-        </form>
-        <div class="error">
-            {{#if errorSearch}}
-            <h2 display='color:red;'>{{errorSearch.message}}</h2>
-            {{/if}}
-        </div>
-        <br>
-
-        <div class='add-shelves-container'>
-            <h2>Create a shelve!</h2>
-            <form action="/dashboard/shelve" method="post">
-                <input name='shelveName' placeholder="Add a new shelve!">
+                </datalist>
                 <input type="submit">
             </form>
             <div class="error">
-                {{#if errorAdd}}
-                <h2 display='color:red;'>{{errorAdd.message}}</h2>
+                {{#if errorSearch}}
+                <h2 display='color:red;'>{{errorSearch.message}}</h2>
                 {{/if}}
             </div>
-            <br> {{#if shelve}}
-            <h2>Create a Bin!</h2>
-            <form action="/dashboard/shelve/bins" method="post">
-                <input name='binName' placeholder="Add a new bin!">
-                <input type="submit">
-            </form>
-            {{/if}}
+            <br>
 
-        </div>
-    </div>
-    {{#if shelve}}
+            <div class='add-shelves-container'>
+                <h2>Create a Shelve!</h2>
+                <form action="/dashboard/shelve" method="post">
+                    <input name='shelveName' placeholder="Add a new shelve!">
+                    <input type="submit">
+                </form>
+                <div class="error">
+                    {{#if errorAdd}}
+                    <h2 display='color:red;'>{{errorAdd.message}}</h2>
+                    {{/if}}
+                </div>
+                <br> {{#if shelve}}
+                <h2>Create a Bin!</h2>
+                <form action="/dashboard/shelve/bins" method="post">
+                    <input name='binName' placeholder="Add a new bin!">
+                    <input type="submit">
+                </form>
+                {{/if}}
 
-    <div class='middle-column'>
-        <h1>{{shelve.name}}</h1>
-        <div id='bin-container'>
-            {{#if bin}} {{#each bin}}
-            <div class="square">
-                {{this.dataValues.name}}
             </div>
-            {{/each}} {{/if}}
-
-            <button type='button' id='bin-add-button'>Add bins!</button>
-            <script>
-                let binContainer = document.getElementById('bin-container')
-                binContainer.addEventListener('click', (evt) => {
-                    let text;
-                    evt.preventDefault()
-                    if (evt.target.id = ("bin-add-button")) {
-                        let bin = prompt("Please enter name of bin", "book-bin")
-                        if (bin === null || bin === '' || !bin) {
-                            text = 'User cancelled the prompt'
-                        } else {
-                            axios.post('/dashboard/shelve/bins',
-                                {
-                                    binName: bin
-                                })
-                                .then(res => {
-                                    console.log(res.data.success)
-                                    if (res.data.success) {
-
-                                        axios.get('/dashboard/shelve/bins')
-                                    }
-                                })
-                        }
-                    }
-                })
-
-            </script>
         </div>
-    </div>
-    {{/if}} {{#if items}}
-    <div class='right-column'>
-        <h1>This is what you have</h1>
-        <ul>
-            <li>Hi</li>
-        </ul>
-    </div>
-    {{/if}}
+        {{#if shelve}}
 
+        <div class='middle-column'>
+            <div class='bins'>
+                <h1>Shelf Title</h1>
+                <h2>{{shelve.name}}</h2>
+                <div id='bin-container'>
+                    {{#if bin}} {{#each bin}}
+                    <div class="square">
+                        {{this.dataValues.name}}
+                    </div>
+                    {{/each}} {{/if}}
+
+
+                </div>
+            </div>
+        </div>
+        {{/if}}
+         {{#if items}}
+        <div class='right-column'>
+            <h1>This is what you have</h1>
+            <ul>
+                <li>Hi</li>
+            </ul>
+        </div>
+        {{/if}}
+    </div>
 </div>
