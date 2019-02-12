@@ -17,7 +17,6 @@ router.get("/dashboard/shelve/bins/items", (req, res) => {
     let binId = req.query.bin;
     let bin = req.session.bin;
     req.session.openBin = binId;
-    console.log("This is req.session", req.session);
     let items = [];
     dbItems
       .getItems(binId)
@@ -25,8 +24,6 @@ router.get("/dashboard/shelve/bins/items", (req, res) => {
         itemsArray.forEach(e => {
           items.push(e.dataValues);
         });
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~");
-        console.log("This is this", items);
         if (items.length === 0) {
           res.render("dashboard", {
             title: "dashboard",
@@ -61,21 +58,43 @@ router.get("/dashboard/shelve/bins/items", (req, res) => {
 
 router.post("/dashboard/shelve/bins/items", (req, res) => {
   if (req.session.user) {
-
-
     let name = req.body.item;
     let bin_id = parseInt(req.session.openBin);
-    let user_id = req.session.user.id
+    let user_id = req.session.user.id;
 
-    dbItems.addItems(bin_id, user_id, name)
-      .then(itm=>{
-        console.log('This should be something nteitmting', itm)
-        res.redirect(`/dashboard/shelve/bins/items/?bin=${bin_id}`)
+    dbItems
+      .addItems(bin_id, user_id, name)
+      .then(itm => {
+        console.log("This should be something nteitmting", itm);
+        res.redirect(`/dashboard/shelve/bins/items/?bin=${bin_id}`);
       })
-      .catch(e=>{
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        console.log(e)
+      .catch(e => {
+        console.log(e);
+      });
+  } else {
+    res.redirect("/");
+  }
+});
+
+router.delete("/dashboard/shelve/bins/items", (req, res) => {
+  if (req.session.user) {
+    let bin_id = parseInt(req.session.openBin);
+    let user_id = req.session.user.id;
+
+    let item = req.body.name;
+    console.log(item);
+
+    dbItems
+      .deleteItems(bin_id, user_id, item)
+      .then(e => {
+        console.log("Hi! Please delete");
+        // res.redirect(`/dashboard/shelve/bins/items/`);
+        // res.send( {redirect: `/dashboard/shelve/bins/items/?bin=${bin_id}`})
+        res.send('Hi')
       })
+      .catch(e => {
+        console.log("This is e", e);
+      });
   } else {
     res.redirect("/");
   }

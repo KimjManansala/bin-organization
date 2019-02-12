@@ -36,16 +36,20 @@ if (document.getElementById("deleteBin")) {
   }
 }
 
-
-if(document.getElementById('items-list')){
-  const itemList = document.getElementById('items-list')
-  itemList.addEventListener('click', e=>{
-    console.dir('This should eb the list item', e.target)
-    console.log(e.target.id)
-    if(e.target.id === 'items-data'){
-      console.dir(e.target)
-      console.log('~~~~~~~~~~~~~~~~~~~~~~~')
+if (document.getElementById("items-list")) {
+  const itemList = document.getElementById("items-list");
+  itemList.addEventListener("click", e => {
+    if (e.target.id === "items-data") {
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~");
       console.log(e.target.innerHTML)
+      axios.delete(`/dashboard/shelve/bins/items`, {data: { name : e.target.innerHTML}})
+      .then(e=>{
+        // console.log('HERRO', e)
+        location.reload();
+      })
+      .catch(e=>{
+        console.log('this is the e', e)
+      })
     }
-  })
+  });
 }
