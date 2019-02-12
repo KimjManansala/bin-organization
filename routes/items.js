@@ -90,7 +90,7 @@ router.delete("/dashboard/shelve/bins/items", (req, res) => {
         console.log("Hi! Please delete");
         // res.redirect(`/dashboard/shelve/bins/items/`);
         // res.send( {redirect: `/dashboard/shelve/bins/items/?bin=${bin_id}`})
-        res.send('Hi')
+        res.send({success: true})
       })
       .catch(e => {
         console.log("This is e", e);
