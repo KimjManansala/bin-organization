@@ -31,7 +31,7 @@ if (document.getElementById("deleteBin")) {
         })
         .catch(er => {
           console.log(er);
-        });
+        });g
     });
   }
 }
