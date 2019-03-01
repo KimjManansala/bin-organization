@@ -86,17 +86,23 @@ This simple bin-organizer is a way to keep my personal belongings organized.
 ---
 
 Home Screen
-[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.27.42%20PM.png 'Dashboard')
+![screen shot 2019-02-12 at 3 27 42 pm](https://user-images.githubusercontent.com/40606399/53651563-862ed100-3c0c-11e9-9b6c-c817c4fd6057.png)
+
 Login
-[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.27.53%20PM.png 'Login')
+![screen shot 2019-02-12 at 3 27 53 pm](https://user-images.githubusercontent.com/40606399/53651668-bb3b2380-3c0c-11e9-8cb9-5f47cf95c9cf.png)
+
 Find or add shelves
-[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.28.02%20PM.png 'Find or add shelves')
+![screen shot 2019-02-12 at 3 28 02 pm](https://user-images.githubusercontent.com/40606399/53651682-c8f0a900-3c0c-11e9-9108-d72246a2fd6d.png)
+
 Find or add bins
-[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.29.28%20PM.png 'Find or add bins')
+![screen shot 2019-02-12 at 3 29 28 pm](https://user-images.githubusercontent.com/40606399/53651720-dad24c00-3c0c-11e9-98c8-7775baad801f.png)
+
 Add items
-[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.29.37%20PM.png 'Add items)
+![screen shot 2019-02-12 at 3 29 37 pm](https://user-images.githubusercontent.com/40606399/53651750-eaea2b80-3c0c-11e9-9b5c-eace8d4be18e.png)
+
 Find Items
-[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.30.44%20PM.png 'Find Items')
+![screen shot 2019-02-12 at 3 30 44 pm](https://user-images.githubusercontent.com/40606399/53651789-03f2dc80-3c0d-11e9-9427-359118d926ae.png)
+
 
 ##Code Examples
 ---
