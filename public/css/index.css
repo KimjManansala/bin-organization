@@ -101,6 +101,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 40%;
+    height: 40%;
     justify-content: space-evenly;
 }
 
@@ -115,8 +116,8 @@
 .square {
     border-style: solid;
     border-color: red;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     font-size: 10px;
     overflow: scroll;
     margin: 10px;

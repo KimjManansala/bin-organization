@@ -4,9 +4,9 @@ I am creating this personal project as a way to keep track of all my personal it
 Easily being able to search and fnd which bin a certain item is in and also the quanitity will help me in organizing my own 
 personal belogings.
 
-## Getting Started
 
-T
+
+
 
 <!-- ## Built With -->
 
@@ -17,7 +17,7 @@ T
 
 * **Kim Jasper Manansala** - *Initial work* - [github](https://github.com/KimjManansala)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
 
 ## License
 
@@ -34,7 +34,8 @@ Link will be uploaded shortly
 ##Link to Video of Gameplay
 ---
 <!-- <a href="https://www.youtube.com/watch?v=_gJCeyrkUkM" target="_blank"><img src="http://img.youtube.com/vi/_gJCeyrkUkM/0.jpg" width="240" height="180" border="10" /></a> -->
-Video will be uploaded shortly
+
+<a href='https://www.youtube.com/watch?v=X77VcPAnnFQ' target='_blank'> <img src='https://i.ytimg.com/vi/X77VcPAnnFQ/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCwUOu_3jisviQiICgEnKO7PJC_kQ' width="240" height="180" border="10" /></a>
 
 ##Contents
 --- 
