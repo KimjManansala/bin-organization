@@ -84,28 +84,19 @@ This simple bin-organizer is a way to keep my personal belongings organized.
 
 ##Screenshots
 ---
-<!-- Register screen users see first 
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/register-screen.png 'register-screen.png')
 
-Lobby screen for users waiting to enter the game
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/lobby.png 'lobby.png')
-
-Blue player on canvas
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/blue-player-alone.png 'blue-player-alone.png')
-
-Blue player with flag it changed to blue
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/blue-player.png 'blue-player.png')
-
-Red player with flag it changed to red
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/red-player-plus-ball.png 'red-player-plus-ball.png')
-
-Waiting screen if there are no other players ready to play
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/waiting-screen.png 'waiting-screen.png')
-
-Wining screen when the timer runs out
-![alt text](https://github.com/PirieD704/final_project/blob/master/screenshots/winning-screen.png 'winning-screen.png') -->
-Comming soon
-
+Home Screen
+[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.27.42%20PM.png 'Dashboard')
+Login
+[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.27.53%20PM.png 'Login')
+Find or add shelves
+[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.28.02%20PM.png 'Find or add shelves')
+Find or add bins
+[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.29.28%20PM.png 'Find or add bins')
+Add items
+[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.29.37%20PM.png 'Add items)
+Find Items
+[alt text](https://github.com/KimjManansala/bin-organization/blob/master/img/Bin-Organizer/Screen%20Shot%202019-02-12%20at%203.30.44%20PM.png 'Find Items')
 
 ##Code Examples
 ---
